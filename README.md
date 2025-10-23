@@ -1,12 +1,53 @@
-# React + Vite
+# Lila
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + Vite web application built to combine visual impact, performance and modular front-end architecture.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
+Lila is designed as a front-end space where design meets engineering. It features:
+- Responsive, modern UI across devices
+- Fast development and optimized builds via Vite
+- Clean, modular code structure for scalability
+- Deployment ready and streamlined for updates
+Live demo: https://lila-neon.vercel.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+- React — component-based structure, hooks, state management  
+- Vite — for fast development server and optimized build output  
+- CSS / Styled Components / Tailwind (choose your styling approach) — responsive styles, themes, clean visuals  
+- JavaScript (or TypeScript if you’ve used it) — for logical clarity and maintainability  
+- Vercel — hosting and continuous deployment
+
+---
+
+## Features
+- Fully responsive layout (mobile to desktop)  
+- Smooth transitions and intuitive UI interactions  
+- Optimized for performance with minimal bundle size  
+- Modular architecture: components, pages, assets separated and easily extensible  
+- Clean, readable codebase ready for collaboration or solo scaling
+
+---
+
+## Philosophy
+The goal behind Lila is to make front-end development that not only works, but **feels** right — visually coherent, performant, and maintainable.  
+It’s about blending aesthetics and logic, so that the interface supports the experience in every detail.
+
+---
+
+## Getting Started
+```bash
+# Clone the repository
+git clone https://github.com/ilyajavadeveloper/Lila.git
+
+# Change into project directory
+cd Lila
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
