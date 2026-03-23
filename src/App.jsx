@@ -1,6 +1,4 @@
 import React from "react";
-
-
 import Navbar from "./components/NavBar";
 import Hero from "./components/Hero";
 import AboutGame from "./components/AboutGame";
