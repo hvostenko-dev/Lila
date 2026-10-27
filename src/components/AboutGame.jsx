@@ -1,67 +1,68 @@
 import React from "react";
+import { ABOUT_CONTENT } from "../data/content";
 import styles from "./AboutGame.module.css";
 
 function AboutGame() {
   return (
     <section className={`${styles.section} page`} id="game">
-      <div className={styles.header}>
-        <h2>Об игре</h2>
-        <p>
-          «Лила» — это психологическая трансформационная игра, которая
-          помогает безопасно исследовать себя и свои жизненные ситуации.
-          Вместе с ведущей вы сможете осознать важные внутренние процессы,
-          увидеть привычные сценарии и найти новые способы их прожить.
-          <br /><br />
-          🧩 Это не магия и не предсказания — это мягкая терапевтическая
-          практика, основанная на диалоге, ассоциациях и символах игры.
-        </p>
+      <div className="container">
+        <div className={styles.header}>
+          <span className={styles.eyebrow}>О методе и практике</span>
+          <h2 className={styles.title}>{ABOUT_CONTENT.title}</h2>
+          <p className={styles.lead}>{ABOUT_CONTENT.lead}</p>
+          <p className={styles.note}>
+            <span aria-hidden="true">🧩</span> {ABOUT_CONTENT.note}
+          </p>
 
-        <div className={styles.meta}>
-          <span>⏳ 2–3 часа</span>
-          <span>📍 Офлайн в Ашдоде</span>
-          <span>👥 Индивидуально / мини-группа</span>
+          <div className={styles.meta}>
+            {ABOUT_CONTENT.meta.map((item) => (
+              <span key={item.text} className={styles.metaPill}>
+                <span aria-hidden="true">{item.icon}</span> {item.text}
+              </span>
+            ))}
+          </div>
+
+          <ul className={styles.badges} aria-label="Темы для проработки">
+            {ABOUT_CONTENT.badges.map((badge) => (
+              <li key={badge}>{badge}</li>
+            ))}
+          </ul>
         </div>
 
-        <ul className={styles.badges}>
-          <li>Самопознание</li>
-          <li>Отношения</li>
-          <li>Психологическая поддержка</li>
-          <li>Эмоциональный баланс</li>
-          <li>Работа с целями</li>
-          <li>Развитие ресурсов</li>
-        </ul>
-      </div>
+        <div className={styles.cards}>
+          {ABOUT_CONTENT.cards.map((card) => (
+            <article className={styles.card} key={card.id}>
+              <div className={styles.icon} aria-hidden="true">
+                {card.icon}
+              </div>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </article>
+          ))}
+        </div>
 
-      <div className={styles.cards}>
-        {[
-          ["🧭","Фокус запроса","Определим, что действительно важно именно сейчас и где нужна поддержка."],
-          ["💡","Новые инсайты","Вы увидите ситуацию под другим углом и сможете найти новые ответы."],
-          ["🗺️","Практические шаги","Результаты игры переводим в реальные действия, которые можно начать уже сегодня."],
-          ["🫶","Поддержка","Атмосфера принятия и уважения: можно говорить честно и открыто."],
-          ["🎲","Игровой процесс","Поле, карты и метафоры помогают мягко дойти до сути и прояснить внутреннее."],
-          ["🌿","Терапевтический эффект","Это пространство саморефлексии и внутреннего роста без давления."]
-        ].map(([ico, title, text]) => (
-          <div className={styles.card} key={title}>
-            <div className={styles.icon}>{ico}</div>
-            <h3>{title}</h3>
-            <p>{text}</p>
-          </div>
-        ))}
-      </div>
+        <div className={styles.steps}>
+          <h3 className={styles.stepsTitle}>{ABOUT_CONTENT.stepsTitle}</h3>
+          <ol className={styles.stepsList}>
+            {ABOUT_CONTENT.steps.map((step) => (
+              <li key={step.number} className={styles.stepItem}>
+                <span className={styles.stepNum} aria-hidden="true">
+                  {step.number}
+                </span>
+                <div className={styles.stepBody}>
+                  <h4>{step.title}</h4>
+                  <p>{step.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
 
-      <div className={styles.steps}>
-        <h4>Как проходит встреча</h4>
-        <ul>
-          <li><span>1</span> Знакомство: определяем запрос и цель</li>
-          <li><span>2</span> Настрой и выбор намерения, объяснение правил</li>
-          <li><span>3</span> Игровой процесс: поле, карты, обсуждение</li>
-          <li><span>4</span> Осмысление: что прояснилось, что важно</li>
-          <li><span>5</span> Итог: первые шаги и практические рекомендации</li>
-        </ul>
-      </div>
-
-      <div className={styles.ctaWrap}>
-        <a href="#contact" className={styles.cta}>Записаться на игру</a>
+        <div className={styles.ctaWrap}>
+          <a href="#pricing" className={styles.cta}>
+            Перейти к форматам участия
+          </a>
+        </div>
       </div>
     </section>
   );

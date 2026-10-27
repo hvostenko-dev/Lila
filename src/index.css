@@ -1,28 +1,45 @@
-/* === RESET === */
+/* === RESET & BASE === */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html, body {
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* 🔥 железобетонный фикс белой полосы */
-  
+  overflow-x: hidden;
   font-family: var(--font-body);
   background: var(--bg-light);
   color: var(--text-dark);
   line-height: 1.6;
-
-  /* Сглаживание текста */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
   display: block;
 }
@@ -32,78 +49,75 @@ a {
   text-decoration: none;
 }
 
-/* === ROOT VARIABLES === */
-:root {
-  /* Цвета */
-  --bg-main: #a47aa1;        /* нежно-фиолетовый фон */
-  --bg-light: #fffaf5;       /* светлый беж для карточек */
-  --bg-accent: #fdf6f0;      /* фон акцентных блоков */
-
-  --text-dark: #2a1f2e;      /* глубокий серо-бордовый */
-  --text-light: #fdfdfd;     /* белый для контраста */
-
-  --accent-pink: #e86f6f;    /* тёплый розовый */
-  --accent-gold: #f4b36b;    /* золотистый */
-  --accent-green: #9cc8b5;   /* пастельный зелёный */
-
-  /* UI */
-  --nav-h: 72px;
-  --radius: 16px;
-  --shadow: 0 8px 24px rgba(42, 31, 46, 0.12);
-
-  /* Типографика */
-  --font-title: 'Georgia', 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+button {
+  font-family: inherit;
 }
 
-/* === Базовая секция/страница === */
+:focus-visible {
+  outline: 3px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
+/* === ROOT DESIGN TOKENS === */
+:root {
+  /* Palette */
+  --bg-main: #8f638d;
+  --bg-main-deep: #523451;
+  --bg-light: #fffaf5;
+  --bg-accent: #faf2ea;
+  --bg-surface: #ffffff;
+
+  --text-dark: #2a1f2e;
+  --text-muted: #5f4d66;
+  --text-light: #fdfdfd;
+
+  --accent-pink: #e46c6c;
+  --accent-gold: #f0ae62;
+  --accent-green: #9cc8b5;
+  --border-subtle: rgba(143, 99, 141, 0.16);
+
+  /* Layout & UI */
+  --nav-h: 76px;
+  --container-w: 1240px;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow-sm: 0 6px 20px rgba(42, 31, 46, 0.07);
+  --shadow: 0 14px 36px rgba(42, 31, 46, 0.11);
+  --shadow-lg: 0 22px 54px rgba(42, 31, 46, 0.18);
+
+  /* Typography */
+  --font-title: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* === Accessibility Skip Link === */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 2000;
+  padding: 12px 20px;
+  background: var(--bg-main-deep);
+  color: #fff;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* === Layout Utilities === */
 .page {
   width: 100%;
-  min-height: 100svh;
-
-  @supports (min-height: 100dvh) {
-    min-height: 100dvh;
-  }
-
-  /* full-bleed для цветных секций */
-  margin-left: calc(-1 * (100dvw - 100%) / 2);
-  margin-right: calc(-1 * (100dvw - 100%) / 2);
+  position: relative;
 }
 
-/* === Контейнер === */
 .container {
   width: 100%;
-  max-width: 1400px; /* широкий контейнер */
+  max-width: var(--container-w);
   margin-inline: auto;
-  padding-inline: clamp(16px, 5vw, 64px);
-}
-
-/* === Карточки === */
-.card {
-  width: min(640px, 100%);
-  margin-inline: auto;
-  background: var(--bg-light);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 32px;
-  overflow-wrap: anywhere;
-}
-
-/* === Фуллскрин-блок === */
-.fullscreen {
-  inline-size: 100%;
-  block-size: 100%;
-  display: grid;
-  place-items: center;
-}
-
-/* === Мобилки === */
-@media (max-width: 768px) {
-  .card {
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .container {
-    padding-inline: 16px;
-  }
+  padding-inline: clamp(18px, 4vw, 48px);
 }

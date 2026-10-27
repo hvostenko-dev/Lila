@@ -1,55 +1,67 @@
-// Hero.jsx
 import React from "react";
-import styles from "./Hero.module.css";
+import { HERO_CONTENT } from "../data/content";
 import iraJpg from "../assets/ira.jpg";
+import styles from "./Hero.module.css";
 
 function Hero() {
   return (
     <section className={`${styles.hero} page`} id="hero">
       <div className={styles.inner}>
         <div className={styles.copy}>
+          <span className={styles.badge}>
+            <span aria-hidden="true">✦</span> {HERO_CONTENT.badge}
+          </span>
+
           <h1 className={styles.title}>
-            Лила: <span className={styles.highlight}>Новый взгляд</span>
+            {HERO_CONTENT.titlePrefix}{" "}
+            <span className={styles.highlight}>
+              {HERO_CONTENT.titleHighlight}
+            </span>
           </h1>
-          <p className={styles.subtitle}>
-            Психологическая трансформационная игра под руководством{" "}
-            <b>Иры Тищенко</b>.
-          </p>
+
+          <p className={styles.subtitle}>{HERO_CONTENT.subtitle}</p>
 
           <ul className={styles.points}>
-            <li>✨ Увидеть ситуацию под другим углом</li>
-            <li>✨ Осознать повторяющиеся сценарии</li>
-            <li>✨ Найти новые ресурсы и решения</li>
-            <li>✨ Прожить путь к внутренней гармонии</li>
+            {HERO_CONTENT.points.map((point) => (
+              <li key={point}>
+                <span className={styles.check} aria-hidden="true">
+                  ✦
+                </span>
+                <span>{point}</span>
+              </li>
+            ))}
           </ul>
 
-          <p className={styles.bio}>
-            <b>Ира Тищенко</b> — практикующий психотерапевт. Она проводит не
-            только игру «Лила», но и <b>частные консультации</b>, где помогает
-            мягко разбирать личные запросы и находить реальные шаги к изменениям.
-          </p>
+          <p className={styles.bio}>{HERO_CONTENT.bio}</p>
 
           <div className={styles.actions}>
-            <a href="#game" className={styles.cta}>Подробнее об игре</a>
-            <a href="#contact" className={styles.secondary}>Записаться</a>
+            <a href="#pricing" className={styles.cta}>
+              Выбрать формат участия
+            </a>
+            <a href="#game" className={styles.secondary}>
+              Подробнее об игре
+            </a>
           </div>
         </div>
 
         <div className={styles.visual}>
-          <div className={styles.posterWrap}>
+          <figure className={styles.posterWrap}>
             <img
               src={iraJpg}
-              alt="Ира Тищенко — психотерапевт и ведущая игры"
+              alt="Ира Тищенко — практикующий психотерапевт и ведущая игры Лила"
               className={styles.poster}
               loading="eager"
               decoding="async"
             />
-            <div className={styles.overlay}>
-              <span className={styles.caption}>
-                Ира Тищенко — психотерапевт
+            <figcaption className={styles.overlay}>
+              <strong className={styles.captionName}>
+                {HERO_CONTENT.facilitatorName}
+              </strong>
+              <span className={styles.captionRole}>
+                {HERO_CONTENT.facilitatorRole}
               </span>
-            </div>
-          </div>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>

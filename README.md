@@ -5,7 +5,7 @@
 [![CSS Modules](https://img.shields.io/badge/CSS_Modules-Scoped_Styles-1572B6?logo=css3&logoColor=white)](https://github.com/css-modules/css-modules)
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?logo=vercel&logoColor=white)](https://lila-neon.vercel.app/)
 
-A single-page promotional landing website for the psychological transformational game **"Lila: A New Perspective"** (*«Лила: Новый взгляд»*), led by practicing psychotherapist **Ira Tishchenko** in Ashdod.
+A single-page promotional landing website for the psychological transformational game **"Lila: A New Perspective"** (*«Лила: Новый взгляд»*) and private psychotherapy sessions led by practicing psychotherapist **Ira Tishchenko** in Ashdod.
 
 🔗 **Live Demo:** [https://lila-neon.vercel.app/](https://lila-neon.vercel.app/)
 
@@ -13,12 +13,13 @@ A single-page promotional landing website for the psychological transformational
 
 ## ✨ Key Features
 
-- **Dynamic Sticky Navigation (`NavBar`)** — Scroll-aware header that transitions smoothly as the user navigates across sections (`#hero`, `#game`, `#pricing`, `#contact`).
-- **Hero Showcase (`Hero`)** — Highlights core benefits of the transformational game, facilitator bio, and direct Call-to-Action (CTA) anchor links.
-- **Game Overview & Session Flow (`AboutGame`)** — Presents session metadata (duration, format, location), topic badges, a 6-card value grid, and a 5-step walkthrough of how a session unfolds.
-- **Transparent Pricing (`Pricing`)** — Dedicated participation pricing card with session format details and quick booking link.
-- **Multi-Channel Contact & Location (`Contact`)** — Direct one-click integration with **WhatsApp** (with pre-filled booking message), **Telegram**, phone, email, Facebook, and an embedded interactive **Google Maps** view for the offline venue in Ashdod.
-- **Accessibility Integration** — Configured for the UserWay Accessibility Widget in `index.html` and semantic SVG iconography.
+- **Scroll-Spy Navigation & Mobile Drawer (`NavBar`)** — Sticky header with `IntersectionObserver` active section tracking (`#hero`, `#game`, `#pricing`, `#faq`, `#contact`), accessible mobile menu (`aria-expanded`, `Escape` key handler), and quick booking CTA.
+- **Hero Showcase (`Hero`)** — Highlights core benefits of the transformational game, facilitator credentials, and direct Call-to-Action links.
+- **Game Overview & Session Flow (`AboutGame`)** — Presents session metadata, topic badges, a 6-card value grid (`<article>`), and a 5-step walkthrough of how a session unfolds.
+- **Multi-Format Pricing (`Pricing`)** — Compares 3 participation formats (Mini-Group Game, 1-on-1 Individual Game, and Private Psychotherapy Consultation) with pre-filled WhatsApp booking messages for each tier.
+- **Interactive Accessible FAQ (`Faq`)** — Accordion component (`aria-expanded`, `aria-controls`, smooth CSS grid row transitions) addressing common questions before a session.
+- **Two-Column Contact & Venue Map (`Contact`)** — Direct one-click integration with **WhatsApp**, **Telegram**, phone, email, Facebook, and an interactive **Google Maps** card for the offline venue in Ashdod.
+- **SEO & Accessibility Best Practices** — Semantic HTML5 landmarks (`<header>`, `<main>`, `<footer>`, `<nav>`, `<figure>`), skip-to-content keyboard link, `prefers-reduced-motion` support, Open Graph / Twitter meta tags, and JSON-LD `ProfessionalService` structured data.
 
 ---
 
@@ -28,7 +29,8 @@ A single-page promotional landing website for the psychological transformational
 | :--- | :--- |
 | **UI Library** | [React 19](https://react.dev/) |
 | **Build Tool & Bundler** | [Vite 7](https://vite.dev/) (`@vitejs/plugin-react-swc`) |
-| **Styling** | Scoped CSS Modules (`*.module.css`) & Global CSS |
+| **Styling** | Scoped CSS Modules (`*.module.css`) & CSS Custom Properties |
+| **Typography** | Google Fonts (`Cormorant Garamond` & `Inter`) |
 | **Code Quality** | ESLint 9 (`eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`) |
 | **Deployment** | [Vercel](https://vercel.com/) |
 
@@ -39,25 +41,31 @@ A single-page promotional landing website for the psychological transformational
 ```text
 Lila/
 ├── public/
-│   └── vite.svg
+│   └── favicon.svg              # Custom lotus vector favicon
 ├── src/
-│   ├── assets/                  # Facilitator photos & branding assets
+│   ├── assets/
+│   │   └── ira.jpg              # Facilitator portrait
 │   ├── components/
-│   │   ├── NavBar.jsx           # Scroll-aware top navigation bar
+│   │   ├── NavBar.jsx           # Scroll-spy header & responsive mobile menu
 │   │   ├── NavBar.module.css
 │   │   ├── Hero.jsx             # Hero section with facilitator intro & CTAs
 │   │   ├── Hero.module.css
-│   │   ├── AboutGame.jsx        # Game description, value cards & 5-step process
+│   │   ├── AboutGame.jsx        # Game description, 6 value cards & 5-step process
 │   │   ├── AboutGame.module.css
-│   │   ├── Pricing.jsx          # Session pricing & format summary
+│   │   ├── Pricing.jsx          # 3 participation tiers with custom WhatsApp links
 │   │   ├── Pricing.module.css
-│   │   ├── Contact.jsx          # Social links, direct messengers & Google Maps embed
-│   │   └── Contact.module.css
-│   ├── App.jsx                  # Root layout assembling landing sections
-│   ├── App.css                  # Application-level styles
-│   ├── index.css                # Base reset & global typography/layout rules
+│   │   ├── Faq.jsx              # Accessible FAQ accordion
+│   │   ├── Faq.module.css
+│   │   ├── Contact.jsx          # Direct messengers, social links & Google Maps card
+│   │   ├── Contact.module.css
+│   │   ├── Footer.jsx           # Semantic footer with quick navigation & back-to-top
+│   │   └── Footer.module.css
+│   ├── data/
+│   │   └── content.js           # Centralized structured content & configuration
+│   ├── App.jsx                  # Root layout assembling landmarks & sections
+│   ├── index.css                # Design tokens, reset & accessibility utilities
 │   └── main.jsx                 # React DOM root entrypoint
-├── index.html                   # HTML shell & UserWay accessibility widget loader
+├── index.html                   # HTML5 shell, SEO meta tags & JSON-LD schema
 ├── eslint.config.js             # ESLint flat config
 ├── vite.config.js               # Vite + React SWC configuration
 └── package.json
@@ -96,12 +104,6 @@ npm run dev
 | `npm run build` | Builds the optimized production bundle into `dist/` |
 | `npm run preview` | Locally previews the production build |
 | `npm run lint` | Runs ESLint across the project |
-
----
-
-## ⚙️ Configuration Notes
-
-- **Accessibility Widget:** To enable your own UserWay account in production, replace `YOUR_ACCOUNT_ID` in `index.html` with your UserWay account key.
 
 ---
 

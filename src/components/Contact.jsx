@@ -1,4 +1,5 @@
 import React from "react";
+import { CONTACT_INFO } from "../data/content";
 import styles from "./Contact.module.css";
 
 /* --- SVG ICONS --- */
@@ -10,6 +11,7 @@ const TelegramIcon = (props) => (
     />
   </svg>
 );
+
 const WhatsAppIcon = (props) => (
   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" {...props}>
     <path
@@ -18,6 +20,7 @@ const WhatsAppIcon = (props) => (
     />
   </svg>
 );
+
 const PhoneIcon = (props) => (
   <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" {...props}>
     <path
@@ -26,6 +29,7 @@ const PhoneIcon = (props) => (
     />
   </svg>
 );
+
 const MailIcon = (props) => (
   <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" {...props}>
     <path
@@ -34,15 +38,12 @@ const MailIcon = (props) => (
     />
   </svg>
 );
+
 const FacebookIcon = (props) => (
   <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" {...props}>
     <path
       fill="currentColor"
-      d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 
-         3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.41c0-2.5 
-         1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.47h-1.26
-         c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34v7.03
-         c4.78-.76 8.44-4.92 8.44-9.94Z"
+      d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34v7.03c4.78-.76 8.44-4.92 8.44-9.94Z"
     />
   </svg>
 );
@@ -56,77 +57,163 @@ const PinIcon = (props) => (
   </svg>
 );
 
-/* --- CONTACT COMPONENT --- */
 function Contact() {
   return (
     <section className={`${styles.section} page`} id="contact">
-      <div className={styles.wrapper}>
-        <div className={styles.info}>
-          <h2>Контакты</h2>
-          <p>
-            Встречи проходят <b>офлайн в Ashdod</b>.  
-            Выберите удобный способ связи:
+      <div className="container">
+        <div className={styles.header}>
+          <span className={styles.eyebrow}>Связь и запись</span>
+          <h2 className={styles.title}>Контакты и место встречи</h2>
+          <p className={styles.lead}>
+            Встречи проходят <b>офлайн в Ашдоде</b>. Напишите в удобный
+            мессенджер, чтобы выбрать дату игры или записаться на личную
+            консультацию.
           </p>
+        </div>
 
-          <ul className={styles.contactsList}>
-            <li>
-              <a className={styles.contactLink} href="https://t.me/IrenaShraybman" target="_blank" rel="noreferrer noopener">
-                <span className={`${styles.icon} ${styles.tg}`}><TelegramIcon/></span>
-                <span>@IrenaShraybman</span>
-              </a>
-            </li>
-            <li>
-              <a className={styles.contactLink} href="https://wa.me/380975992075" target="_blank" rel="noreferrer noopener">
-                <span className={`${styles.icon} ${styles.wa}`}><WhatsAppIcon/></span>
-                <span>WhatsApp: +380 97 599 2075</span>
-              </a>
-            </li>
-            <li>
-              <a className={styles.contactLink} href="tel:+380975992075">
-                <span className={styles.icon}><PhoneIcon/></span>
-                <span>+380 97 599 2075</span>
-              </a>
-            </li>
-            <li>
-              <a className={styles.contactLink} href="mailto:Irentishchenko@gmail.com">
-                <span className={styles.icon}><MailIcon/></span>
-                <span>Irentishchenko@gmail.com</span>
-              </a>
-            </li>
-            <li>
-              <a className={styles.contactLink} href="https://www.facebook.com/share/1ANUQ9yhEu/" target="_blank" rel="noreferrer noopener">
-                <span className={styles.icon}><FacebookIcon/></span>
-                <span>Facebook</span>
-              </a>
-            </li>
-            <li>
-              <a className={styles.contactLink} href="https://www.google.com/maps?q=Ha-Gdud%20ha-Ivri%20St%206%2C%20Ashdod" target="_blank" rel="noreferrer noopener">
-                <span className={styles.icon}><PinIcon/></span>
-                <span>Ha-Gdud ha-Ivri St 6, Ashdod</span>
-              </a>
+        <div className={styles.layout}>
+          <div className={styles.channels}>
+            <ul className={styles.contactsList}>
+              <li>
+                <a
+                  className={styles.contactLink}
+                  href={CONTACT_INFO.whatsappBookingHref}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <span className={`${styles.icon} ${styles.wa}`}>
+                    <WhatsAppIcon />
+                  </span>
+                  <div className={styles.contactMeta}>
+                    <span className={styles.contactLabel}>WhatsApp</span>
+                    <strong className={styles.contactValue}>
+                      {CONTACT_INFO.phoneDisplay}
+                    </strong>
+                  </div>
+                </a>
+              </li>
 
-              <div className={styles.mapWrapper}>
-                <iframe
-                  title="Ashdod Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3391.621260542409!2d34.64216231515784!3d31.801447281280622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502a391cb7a65ef%3A0x8a4444d0f7e2c664!2sHa-Gdud%20ha-Ivri%20St%206%2C%20Ashdod!5e0!3m2!1sen!2sil!4v1700213024000!5m2!1sen!2sil"
-                  allowFullScreen=""
-                  loading="lazy"
-                />
+              <li>
+                <a
+                  className={styles.contactLink}
+                  href={CONTACT_INFO.telegramHref}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <span className={`${styles.icon} ${styles.tg}`}>
+                    <TelegramIcon />
+                  </span>
+                  <div className={styles.contactMeta}>
+                    <span className={styles.contactLabel}>Telegram</span>
+                    <strong className={styles.contactValue}>
+                      {CONTACT_INFO.telegramHandle}
+                    </strong>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a className={styles.contactLink} href={CONTACT_INFO.phoneHref}>
+                  <span className={styles.icon}>
+                    <PhoneIcon />
+                  </span>
+                  <div className={styles.contactMeta}>
+                    <span className={styles.contactLabel}>Телефон</span>
+                    <strong className={styles.contactValue}>
+                      {CONTACT_INFO.phoneDisplay}
+                    </strong>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a className={styles.contactLink} href={CONTACT_INFO.emailHref}>
+                  <span className={styles.icon}>
+                    <MailIcon />
+                  </span>
+                  <div className={styles.contactMeta}>
+                    <span className={styles.contactLabel}>Email</span>
+                    <strong className={styles.contactValue}>
+                      {CONTACT_INFO.email}
+                    </strong>
+                  </div>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  className={styles.contactLink}
+                  href={CONTACT_INFO.facebookHref}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <span className={`${styles.icon} ${styles.fb}`}>
+                    <FacebookIcon />
+                  </span>
+                  <div className={styles.contactMeta}>
+                    <span className={styles.contactLabel}>Социальные сети</span>
+                    <strong className={styles.contactValue}>
+                      Страница в Facebook
+                    </strong>
+                  </div>
+                </a>
+              </li>
+            </ul>
+
+            <div className={styles.quickActions}>
+              <a
+                className={`${styles.actionBtn} ${styles.actionPrimary}`}
+                href={CONTACT_INFO.whatsappBookingHref}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <WhatsAppIcon />
+                <span>Написать в WhatsApp</span>
+              </a>
+              <a
+                className={styles.actionBtn}
+                href={CONTACT_INFO.telegramHref}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <TelegramIcon />
+                <span>Написать в Telegram</span>
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.mapCard}>
+            <a
+              className={styles.addressHeader}
+              href={CONTACT_INFO.mapLink}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <span className={styles.icon}>
+                <PinIcon />
+              </span>
+              <div className={styles.contactMeta}>
+                <span className={styles.contactLabel}>Адрес проведения</span>
+                <strong className={styles.contactValue}>
+                  {CONTACT_INFO.address}
+                </strong>
               </div>
-            </li>
-          </ul>
+            </a>
 
-          <div className={styles.quickActions}>
-            <a className={`${styles.actionBtn} ${styles.actionPrimary}`} href="https://wa.me/380975992075?text=Здравствуйте%2C%20хочу%20записаться%20на%20игру" target="_blank" rel="noreferrer noopener">
-              <WhatsAppIcon/> <span>Написать в WhatsApp</span>
-            </a>
-            <a className={styles.actionBtn} href="https://t.me/IrenaShraybman" target="_blank" rel="noreferrer noopener">
-              <TelegramIcon/> <span>Написать в Telegram</span>
-            </a>
+            <div className={styles.mapWrapper}>
+              <iframe
+                title="Карта расположения в Ашдоде — Ha-Gdud ha-Ivri St 6"
+                src={CONTACT_INFO.mapEmbedSrc}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 export default Contact;

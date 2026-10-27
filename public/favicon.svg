@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="lotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a47aa1" />
+      <stop offset="50%" stop-color="#e86f6f" />
+      <stop offset="100%" stop-color="#f4b36b" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#2a1f2e" />
+  <path
+    d="M32 12C27 22 24 30 32 44C40 30 37 22 32 12Z"
+    fill="url(#lotusGrad)"
+  />
+  <path
+    d="M32 44C22 36 15 28 16 18C24 22 28 30 32 44Z"
+    fill="url(#lotusGrad)"
+    opacity="0.85"
+  />
+  <path
+    d="M32 44C42 36 49 28 48 18C40 22 36 30 32 44Z"
+    fill="url(#lotusGrad)"
+    opacity="0.85"
+  />
+  <path
+    d="M32 44C18 43 10 37 8 28C17 29 25 35 32 44Z"
+    fill="url(#lotusGrad)"
+    opacity="0.65"
+  />
+  <path
+    d="M32 44C46 43 54 37 56 28C47 29 39 35 32 44Z"
+    fill="url(#lotusGrad)"
+    opacity="0.65"
+  />
+  <path
+    d="M16 48C24 51 40 51 48 48"
+    stroke="#f4b36b"
+    stroke-width="2.5"
+    stroke-linecap="round"
+  />
+</svg>

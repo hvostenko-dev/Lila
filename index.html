@@ -1,59 +1,95 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth bg-[#0a0a0a] text-white">
-<head>
-    <meta charset="utf-8" />
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0a0a" />
-
-    <!-- Primary Meta Tags -->
-    <title>MAESTRO STUDIO — Digital Agency & Creative Web Craft</title>
-    <meta name="title" content="MAESTRO STUDIO — Digital Agency & Creative Web Craft" />
-    <meta
-            name="description"
-            content="Создание современных лендингов, корпоративных сайтов, премиального дизайна и иммерсивных веб-решений для бизнеса."
-    />
+    <title>Лила: Новый взгляд — Трансформационная игра с Ирой Тищенко в Ашдоде</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Primary Meta Tags -->
+    <meta
+      name="title"
+      content="Лила: Новый взгляд — Трансформационная игра с Ирой Тищенко в Ашдоде"
+    />
+    <meta
+      name="description"
+      content="Психологическая трансформационная игра «Лила» и частные консультации под руководством практикующего психотерапевта Иры Тищенко. Офлайн-встречи в Ашдоде."
+    />
+    <meta
+      name="keywords"
+      content="Лила, трансформационная игра, психотерапевт Ашдод, Ира Тищенко, психологическая игра, самопознание, психология Израиль"
+    />
+    <meta name="author" content="Ира Тищенко" />
+    <meta name="theme-color" content="#6e486c" />
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-    </style>
-</head>
-<body>
-<noscript>Для полноценной работы сайта, пожалуйста, включите JavaScript в вашем браузере.</noscript>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content="https://lila-neon.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Лила: Новый взгляд — Психологическая трансформационная игра"
+    />
+    <meta
+      property="og:description"
+      content="Безопасное пространство самоисследования, осознания сценариев и поиска новых ресурсов под руководством психотерапевта Иры Тищенко в Ашдоде."
+    />
 
-<!-- React root container -->
-<div id="root"></div>
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://lila-neon.vercel.app/" />
+    <meta
+      name="twitter:title"
+      content="Лила: Новый взгляд — Психологическая трансформационная игра"
+    />
+    <meta
+      name="twitter:description"
+      content="Безопасное пространство самоисследования, осознания сценариев и поиска новых ресурсов под руководством психотерапевта Иры Тищенко в Ашдоде."
+    />
 
-<!-- UserWay Accessibility Widget -->
-<script>
-    (function(d){
-        var s = d.createElement("script");
-        s.setAttribute("data-account", "YOUR_ACCOUNT_ID"); /* поменяй на свой ID при необходимости */
-        s.setAttribute("src", "https://cdn.userway.org/widget.js");
-        (d.body || d.head).appendChild(s);
-    })(document);
-</script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-<noscript>
-    Пожалуйста, включите JavaScript для корректной работы доступности.
-</noscript>
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Лила: Новый взгляд — Ира Тищенко",
+        "description": "Психологическая трансформационная игра «Лила» и индивидуальные психотерапевтические консультации в Ашдоде.",
+        "url": "https://lila-neon.vercel.app/",
+        "telephone": "+380975992075",
+        "email": "Irentishchenko@gmail.com",
+        "priceRange": "₪200 - ₪450",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Ha-Gdud ha-Ivri St 6",
+          "addressLocality": "Ashdod",
+          "addressCountry": "IL"
+        },
+        "sameAs": [
+          "https://t.me/IrenaShraybman",
+          "https://www.facebook.com/share/1ANUQ9yhEu/"
+        ]
+      }
+    </script>
+  </head>
 
-<!-- React entrypoint -->
-<script type="module" src="/src/main.jsx"></script>
-</body>
+  <body>
+    <div id="root"></div>
+
+    <noscript>
+      Пожалуйста, включите JavaScript для корректного отображения сайта.
+    </noscript>
+
+    <!-- React entrypoint -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
