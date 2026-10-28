@@ -14,6 +14,7 @@ A single-page promotional landing website for the psychological transformational
 ## ✨ Key Features
 
 - **Scroll-Spy Navigation & Mobile Drawer (`NavBar`)** — Sticky header with `IntersectionObserver` active section tracking (`#hero`, `#game`, `#pricing`, `#faq`, `#contact`), accessible mobile menu (`aria-expanded`, `Escape` key handler), and quick booking CTA.
+- **Multilingual: Russian / English / Hebrew (`src/i18n`)** — Lightweight dependency-free i18n via React Context. Language switcher buttons (RU / EN / עב) in the header, choice persisted in `localStorage` with browser-language auto-detection, full **RTL** layout for Hebrew (`dir="rtl"`, CSS logical properties, Hebrew fonts), localized document title / meta tags and WhatsApp booking messages.
 - **Hero Showcase (`Hero`)** — Highlights core benefits of the transformational game, facilitator credentials, and direct Call-to-Action links.
 - **Game Overview & Session Flow (`AboutGame`)** — Presents session metadata, topic badges, a 6-card value grid (`<article>`), and a 5-step walkthrough of how a session unfolds.
 - **Multi-Format Pricing (`Pricing`)** — Compares 3 participation formats (Mini-Group Game, 1-on-1 Individual Game, and Private Psychotherapy Consultation) with pre-filled WhatsApp booking messages for each tier.
@@ -30,7 +31,7 @@ A single-page promotional landing website for the psychological transformational
 | **UI Library** | [React 19](https://react.dev/) |
 | **Build Tool & Bundler** | [Vite 7](https://vite.dev/) (`@vitejs/plugin-react-swc`) |
 | **Styling** | Scoped CSS Modules (`*.module.css`) & CSS Custom Properties |
-| **Typography** | Google Fonts (`Cormorant Garamond` & `Inter`) |
+| **Typography** | Google Fonts (`Cormorant Garamond` & `Inter`; `Frank Ruhl Libre` & `Heebo` for Hebrew) |
 | **Code Quality** | ESLint 9 (`eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`) |
 | **Deployment** | [Vercel](https://vercel.com/) |
 
@@ -58,10 +59,18 @@ Lila/
 │   │   ├── Faq.module.css
 │   │   ├── Contact.jsx          # Direct messengers, social links & Google Maps card
 │   │   ├── Contact.module.css
+│   │   ├── LanguageSwitcher.jsx # RU / EN / HE language toggle buttons
+│   │   ├── LanguageSwitcher.module.css
 │   │   ├── Footer.jsx           # Semantic footer with quick navigation & back-to-top
 │   │   └── Footer.module.css
 │   ├── data/
-│   │   └── content.js           # Centralized structured content & configuration
+│   │   └── content.js           # Language-independent data (contacts, section ids)
+│   ├── i18n/
+│   │   ├── locales/             # ru.js, en.js, he.js — all translatable texts
+│   │   ├── config.js            # Supported languages, detection & persistence
+│   │   ├── LanguageContext.js   # React context
+│   │   ├── LanguageProvider.jsx # Provider: sets <html lang/dir>, title & meta
+│   │   └── useLanguage.js       # Hook: { lang, dir, setLang, t }
 │   ├── App.jsx                  # Root layout assembling landmarks & sections
 │   ├── index.css                # Design tokens, reset & accessibility utilities
 │   └── main.jsx                 # React DOM root entrypoint
