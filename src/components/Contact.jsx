@@ -1,5 +1,6 @@
 import React from "react";
-import { CONTACT_INFO } from "../data/content";
+import { CONTACT_INFO, buildWhatsappLink } from "../data/content";
+import { useLanguage } from "../i18n/useLanguage";
 import styles from "./Contact.module.css";
 
 /* --- SVG ICONS --- */
@@ -58,16 +59,20 @@ const PinIcon = (props) => (
 );
 
 function Contact() {
+  const { t } = useLanguage();
+  const c = t.contact;
+  const whatsappBookingHref = buildWhatsappLink(c.bookingMessage);
+
   return (
     <section className={`${styles.section} page`} id="contact">
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.eyebrow}>Связь и запись</span>
-          <h2 className={styles.title}>Контакты и место встречи</h2>
+          <span className={styles.eyebrow}>{c.eyebrow}</span>
+          <h2 className={styles.title}>{c.title}</h2>
           <p className={styles.lead}>
-            Встречи проходят <b>офлайн в Ашдоде</b>. Напишите в удобный
-            мессенджер, чтобы выбрать дату игры или записаться на личную
-            консультацию.
+            {c.leadBefore}
+            <b>{c.leadHighlight}</b>
+            {c.leadAfter}
           </p>
         </div>
 
@@ -77,7 +82,7 @@ function Contact() {
               <li>
                 <a
                   className={styles.contactLink}
-                  href={CONTACT_INFO.whatsappBookingHref}
+                  href={whatsappBookingHref}
                   target="_blank"
                   rel="noreferrer noopener"
                 >
@@ -86,7 +91,7 @@ function Contact() {
                   </span>
                   <div className={styles.contactMeta}>
                     <span className={styles.contactLabel}>WhatsApp</span>
-                    <strong className={styles.contactValue}>
+                    <strong className={styles.contactValue} dir="ltr">
                       {CONTACT_INFO.phoneDisplay}
                     </strong>
                   </div>
@@ -105,7 +110,7 @@ function Contact() {
                   </span>
                   <div className={styles.contactMeta}>
                     <span className={styles.contactLabel}>Telegram</span>
-                    <strong className={styles.contactValue}>
+                    <strong className={styles.contactValue} dir="ltr">
                       {CONTACT_INFO.telegramHandle}
                     </strong>
                   </div>
@@ -118,8 +123,8 @@ function Contact() {
                     <PhoneIcon />
                   </span>
                   <div className={styles.contactMeta}>
-                    <span className={styles.contactLabel}>Телефон</span>
-                    <strong className={styles.contactValue}>
+                    <span className={styles.contactLabel}>{c.phoneLabel}</span>
+                    <strong className={styles.contactValue} dir="ltr">
                       {CONTACT_INFO.phoneDisplay}
                     </strong>
                   </div>
@@ -133,7 +138,7 @@ function Contact() {
                   </span>
                   <div className={styles.contactMeta}>
                     <span className={styles.contactLabel}>Email</span>
-                    <strong className={styles.contactValue}>
+                    <strong className={styles.contactValue} dir="ltr">
                       {CONTACT_INFO.email}
                     </strong>
                   </div>
@@ -151,9 +156,9 @@ function Contact() {
                     <FacebookIcon />
                   </span>
                   <div className={styles.contactMeta}>
-                    <span className={styles.contactLabel}>Социальные сети</span>
+                    <span className={styles.contactLabel}>{c.socialLabel}</span>
                     <strong className={styles.contactValue}>
-                      Страница в Facebook
+                      {c.facebookPage}
                     </strong>
                   </div>
                 </a>
@@ -163,12 +168,12 @@ function Contact() {
             <div className={styles.quickActions}>
               <a
                 className={`${styles.actionBtn} ${styles.actionPrimary}`}
-                href={CONTACT_INFO.whatsappBookingHref}
+                href={whatsappBookingHref}
                 target="_blank"
                 rel="noreferrer noopener"
               >
                 <WhatsAppIcon />
-                <span>Написать в WhatsApp</span>
+                <span>{c.writeWhatsapp}</span>
               </a>
               <a
                 className={styles.actionBtn}
@@ -177,7 +182,7 @@ function Contact() {
                 rel="noreferrer noopener"
               >
                 <TelegramIcon />
-                <span>Написать в Telegram</span>
+                <span>{c.writeTelegram}</span>
               </a>
             </div>
           </div>
@@ -193,8 +198,8 @@ function Contact() {
                 <PinIcon />
               </span>
               <div className={styles.contactMeta}>
-                <span className={styles.contactLabel}>Адрес проведения</span>
-                <strong className={styles.contactValue}>
+                <span className={styles.contactLabel}>{c.addressLabel}</span>
+                <strong className={styles.contactValue} dir="ltr">
                   {CONTACT_INFO.address}
                 </strong>
               </div>
@@ -202,7 +207,7 @@ function Contact() {
 
             <div className={styles.mapWrapper}>
               <iframe
-                title="Карта расположения в Ашдоде — Ha-Gdud ha-Ivri St 6"
+                title={c.mapTitle}
                 src={CONTACT_INFO.mapEmbedSrc}
                 allowFullScreen
                 loading="lazy"

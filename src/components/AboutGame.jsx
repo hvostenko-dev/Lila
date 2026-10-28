@@ -1,36 +1,39 @@
 import React from "react";
-import { ABOUT_CONTENT } from "../data/content";
+import { useLanguage } from "../i18n/useLanguage";
 import styles from "./AboutGame.module.css";
 
 function AboutGame() {
+  const { t } = useLanguage();
+  const about = t.about;
+
   return (
     <section className={`${styles.section} page`} id="game">
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.eyebrow}>О методе и практике</span>
-          <h2 className={styles.title}>{ABOUT_CONTENT.title}</h2>
-          <p className={styles.lead}>{ABOUT_CONTENT.lead}</p>
+          <span className={styles.eyebrow}>{about.eyebrow}</span>
+          <h2 className={styles.title}>{about.title}</h2>
+          <p className={styles.lead}>{about.lead}</p>
           <p className={styles.note}>
-            <span aria-hidden="true">🧩</span> {ABOUT_CONTENT.note}
+            <span aria-hidden="true">🧩</span> {about.note}
           </p>
 
           <div className={styles.meta}>
-            {ABOUT_CONTENT.meta.map((item) => (
+            {about.meta.map((item) => (
               <span key={item.text} className={styles.metaPill}>
                 <span aria-hidden="true">{item.icon}</span> {item.text}
               </span>
             ))}
           </div>
 
-          <ul className={styles.badges} aria-label="Темы для проработки">
-            {ABOUT_CONTENT.badges.map((badge) => (
+          <ul className={styles.badges} aria-label={about.badgesAria}>
+            {about.badges.map((badge) => (
               <li key={badge}>{badge}</li>
             ))}
           </ul>
         </div>
 
         <div className={styles.cards}>
-          {ABOUT_CONTENT.cards.map((card) => (
+          {about.cards.map((card) => (
             <article className={styles.card} key={card.id}>
               <div className={styles.icon} aria-hidden="true">
                 {card.icon}
@@ -42,9 +45,9 @@ function AboutGame() {
         </div>
 
         <div className={styles.steps}>
-          <h3 className={styles.stepsTitle}>{ABOUT_CONTENT.stepsTitle}</h3>
+          <h3 className={styles.stepsTitle}>{about.stepsTitle}</h3>
           <ol className={styles.stepsList}>
-            {ABOUT_CONTENT.steps.map((step) => (
+            {about.steps.map((step) => (
               <li key={step.number} className={styles.stepItem}>
                 <span className={styles.stepNum} aria-hidden="true">
                   {step.number}
@@ -60,7 +63,7 @@ function AboutGame() {
 
         <div className={styles.ctaWrap}>
           <a href="#pricing" className={styles.cta}>
-            Перейти к форматам участия
+            {about.cta}
           </a>
         </div>
       </div>

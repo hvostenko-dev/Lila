@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NAV_ITEMS } from "../data/content";
+import { SECTION_IDS } from "../data/content";
+import { useLanguage } from "../i18n/useLanguage";
+import LanguageSwitcher from "./LanguageSwitcher";
 import styles from "./NavBar.module.css";
 
 function NavBar() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState("hero");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,8 +18,8 @@ function NavBar() {
   }, []);
 
   useEffect(() => {
-    const sections = NAV_ITEMS.map((item) =>
-      document.getElementById(item.id)
+    const sections = SECTION_IDS.map((id) =>
+      document.getElementById(id)
     ).filter(Boolean);
 
     if (sections.length === 0) return;
@@ -60,35 +63,22 @@ function NavBar() {
           <span className={styles.brandMark} aria-hidden="true">
             ✦
           </span>
-          <span className={styles.brandText}>Лила</span>
-          <span className={styles.brandSub}>Новый взгляд</span>
+          <span className={styles.brandText}>{t.ui.brandName}</span>
+          <span className={styles.brandSub}>{t.ui.brandSub}</span>
         </a>
-
-        <button
-          type="button"
-          className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ""}`}
-          aria-expanded={menuOpen}
-          aria-controls="primary-navigation"
-          aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
 
         <nav
           id="primary-navigation"
-          aria-label="Основная навигация"
+          aria-label={t.ui.navAria}
           className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}
         >
           <ul className={styles.navLinks}>
-            {NAV_ITEMS.map((item) => {
+            {t.nav.map((item) => {
               const isActive = activeId === item.id;
               return (
                 <li key={item.id}>
                   <a
-                    href={item.href}
+                    href={`#${item.id}`}
                     className={isActive ? styles.active : ""}
                     aria-current={isActive ? "page" : undefined}
                     onClick={handleLinkClick}
@@ -105,9 +95,26 @@ function NavBar() {
             className={styles.navCta}
             onClick={handleLinkClick}
           >
-            Записаться
+            {t.ui.book}
           </a>
         </nav>
+
+        <div className={styles.controls}>
+          <LanguageSwitcher />
+
+          <button
+            type="button"
+            className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ""}`}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            aria-label={menuOpen ? t.ui.menuClose : t.ui.menuOpen}
+            onClick={() => setMenuOpen((prev) => !prev)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
     </header>
   );

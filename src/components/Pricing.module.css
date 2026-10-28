@@ -141,7 +141,7 @@
   list-style: none;
   padding: 0;
   margin: 0 0 28px;
-  text-align: left;
+  text-align: start;
   font-size: 15px;
   line-height: 1.6;
   display: grid;
@@ -149,7 +149,7 @@
 }
 
 .list li {
-  padding-left: 26px;
+  padding-inline-start: 26px;
   position: relative;
   color: var(--text-dark);
 }
@@ -159,7 +159,7 @@
   color: var(--accent-pink);
   font-size: 15px;
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   top: 0;
 }
 

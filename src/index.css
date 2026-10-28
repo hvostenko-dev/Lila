@@ -90,11 +90,17 @@ button {
   --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Hebrew: fonts with Hebrew glyph support */
+html[lang="he"] {
+  --font-title: "Frank Ruhl Libre", "Times New Roman", serif;
+  --font-body: "Heebo", "Arial Hebrew", system-ui, sans-serif;
+}
+
 /* === Accessibility Skip Link === */
 .skip-link {
   position: fixed;
   top: -100px;
-  left: 16px;
+  inset-inline-start: 16px;
   z-index: 2000;
   padding: 12px 20px;
   background: var(--bg-main-deep);

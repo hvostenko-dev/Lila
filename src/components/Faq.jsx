@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { FAQ_ITEMS } from "../data/content";
+import { useLanguage } from "../i18n/useLanguage";
 import styles from "./Faq.module.css";
 
 function Faq() {
-  const [openId, setOpenId] = useState(FAQ_ITEMS[0]?.id ?? null);
+  const { t } = useLanguage();
+  const faq = t.faq;
+  const [openId, setOpenId] = useState(faq.items[0]?.id ?? null);
 
   const toggleItem = (id) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -13,16 +15,13 @@ function Faq() {
     <section className={`${styles.section} page`} id="faq">
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.eyebrow}>Ответы на вопросы</span>
-          <h2 className={styles.title}>Частые вопросы перед встречей</h2>
-          <p className={styles.lead}>
-            Всё, что важно знать перед вашей первой игрой «Лила» или личной
-            консультацией.
-          </p>
+          <span className={styles.eyebrow}>{faq.eyebrow}</span>
+          <h2 className={styles.title}>{faq.title}</h2>
+          <p className={styles.lead}>{faq.lead}</p>
         </div>
 
         <div className={styles.accordion}>
-          {FAQ_ITEMS.map((item) => {
+          {faq.items.map((item) => {
             const isOpen = openId === item.id;
             const panelId = `${item.id}-panel`;
             const buttonId = `${item.id}-btn`;

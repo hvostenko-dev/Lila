@@ -1,28 +1,29 @@
 import React from "react";
-import { HERO_CONTENT } from "../data/content";
+import { useLanguage } from "../i18n/useLanguage";
 import iraJpg from "../assets/ira.jpg";
 import styles from "./Hero.module.css";
 
 function Hero() {
+  const { t } = useLanguage();
+  const hero = t.hero;
+
   return (
     <section className={`${styles.hero} page`} id="hero">
       <div className={styles.inner}>
         <div className={styles.copy}>
           <span className={styles.badge}>
-            <span aria-hidden="true">✦</span> {HERO_CONTENT.badge}
+            <span aria-hidden="true">✦</span> {hero.badge}
           </span>
 
           <h1 className={styles.title}>
-            {HERO_CONTENT.titlePrefix}{" "}
-            <span className={styles.highlight}>
-              {HERO_CONTENT.titleHighlight}
-            </span>
+            {hero.titlePrefix}{" "}
+            <span className={styles.highlight}>{hero.titleHighlight}</span>
           </h1>
 
-          <p className={styles.subtitle}>{HERO_CONTENT.subtitle}</p>
+          <p className={styles.subtitle}>{hero.subtitle}</p>
 
           <ul className={styles.points}>
-            {HERO_CONTENT.points.map((point) => (
+            {hero.points.map((point) => (
               <li key={point}>
                 <span className={styles.check} aria-hidden="true">
                   ✦
@@ -32,14 +33,14 @@ function Hero() {
             ))}
           </ul>
 
-          <p className={styles.bio}>{HERO_CONTENT.bio}</p>
+          <p className={styles.bio}>{hero.bio}</p>
 
           <div className={styles.actions}>
             <a href="#pricing" className={styles.cta}>
-              Выбрать формат участия
+              {hero.ctaPrimary}
             </a>
             <a href="#game" className={styles.secondary}>
-              Подробнее об игре
+              {hero.ctaSecondary}
             </a>
           </div>
         </div>
@@ -48,17 +49,17 @@ function Hero() {
           <figure className={styles.posterWrap}>
             <img
               src={iraJpg}
-              alt="Ира Тищенко — практикующий психотерапевт и ведущая игры Лила"
+              alt={hero.imageAlt}
               className={styles.poster}
               loading="eager"
               decoding="async"
             />
             <figcaption className={styles.overlay}>
               <strong className={styles.captionName}>
-                {HERO_CONTENT.facilitatorName}
+                {hero.facilitatorName}
               </strong>
               <span className={styles.captionRole}>
-                {HERO_CONTENT.facilitatorRole}
+                {hero.facilitatorRole}
               </span>
             </figcaption>
           </figure>

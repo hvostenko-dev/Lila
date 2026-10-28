@@ -6,12 +6,15 @@ import Pricing from "./components/Pricing";
 import Faq from "./components/Faq";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { useLanguage } from "./i18n/useLanguage";
 
 function App() {
+  const { t } = useLanguage();
+
   return (
     <>
       <a href="#main-content" className="skip-link">
-        Перейти к основному содержимому
+        {t.ui.skipLink}
       </a>
       <NavBar />
       <main id="main-content">

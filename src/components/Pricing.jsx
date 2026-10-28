@@ -1,25 +1,24 @@
 import React from "react";
-import { CONTACT_INFO, PRICING_PLANS } from "../data/content";
+import { buildWhatsappLink } from "../data/content";
+import { useLanguage } from "../i18n/useLanguage";
 import styles from "./Pricing.module.css";
 
 function Pricing() {
+  const { t } = useLanguage();
+  const pricing = t.pricing;
+
   return (
     <section className={`${styles.section} page`} id="pricing">
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.eyebrow}>Участие и консультации</span>
-          <h2 className={styles.title}>Форматы работы и стоимость</h2>
-          <p className={styles.lead}>
-            Выберите комфортный для себя формат: живая динамика в камерной
-            мини-группе, глубокая индивидуальная игра или личная консультация.
-          </p>
+          <span className={styles.eyebrow}>{pricing.eyebrow}</span>
+          <h2 className={styles.title}>{pricing.title}</h2>
+          <p className={styles.lead}>{pricing.lead}</p>
         </div>
 
         <div className={styles.grid}>
-          {PRICING_PLANS.map((plan) => {
-            const bookingUrl = `${CONTACT_INFO.whatsappHref}?text=${encodeURIComponent(
-              plan.whatsappText
-            )}`;
+          {pricing.plans.map((plan) => {
+            const bookingUrl = buildWhatsappLink(plan.whatsappText);
 
             return (
               <article
