@@ -39,6 +39,8 @@ const en = {
     ctaPrimary: "Choose a format",
     ctaSecondary: "Learn more about the game",
     imageAlt: "Ira Tishchenko — practicing psychotherapist and Lila game facilitator",
+    floatingBadge1: "Safe & confidential space",
+    floatingBadge2: "1:1 & mini-groups",
   },
   about: {
     eyebrow: "About the method",

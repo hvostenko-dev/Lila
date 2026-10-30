@@ -39,6 +39,8 @@ const he = {
     ctaPrimary: "בחירת מסלול השתתפות",
     ctaSecondary: "עוד על המשחק",
     imageAlt: "אירה טישצ'נקו — פסיכותרפיסטית ומנחת המשחק לילה",
+    floatingBadge1: "מרחב בטוח ומכיל",
+    floatingBadge2: "מפגשים אישיים ובקבוצות",
   },
   about: {
     eyebrow: "על השיטה והפרקטיקה",

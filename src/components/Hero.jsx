@@ -46,23 +46,94 @@ function Hero() {
         </div>
 
         <div className={styles.visual}>
-          <figure className={styles.posterWrap}>
-            <img
-              src={iraJpg}
-              alt={hero.imageAlt}
-              className={styles.poster}
-              loading="eager"
-              decoding="async"
-            />
-            <figcaption className={styles.overlay}>
-              <strong className={styles.captionName}>
-                {hero.facilitatorName}
-              </strong>
-              <span className={styles.captionRole}>
-                {hero.facilitatorRole}
+          <div className={styles.visualContainer}>
+            {/* Ambient Multi-Stop Radiant Glow */}
+            <div className={styles.ambientGlow} aria-hidden="true" />
+
+            {/* Celestial / Sacred Geometry Accent Rings */}
+            <div className={styles.celestialRing} aria-hidden="true">
+              <svg
+                viewBox="0 0 200 200"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={styles.ringSvg}
+              >
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="95"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  strokeDasharray="4 6"
+                  opacity="0.45"
+                />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="80"
+                  stroke="currentColor"
+                  strokeWidth="0.75"
+                  opacity="0.3"
+                />
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="66"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  strokeDasharray="2 4"
+                  opacity="0.25"
+                />
+              </svg>
+            </div>
+
+            {/* Subtle sparkling accent stars */}
+            <span className={`${styles.sparkle} ${styles.sparkle1}`} aria-hidden="true">✦</span>
+            <span className={`${styles.sparkle} ${styles.sparkle2}`} aria-hidden="true">✦</span>
+            <span className={`${styles.sparkle} ${styles.sparkle3}`} aria-hidden="true">✦</span>
+
+            {/* Decorative Offset Backdrop Plate */}
+            <div className={styles.backdropPlate} aria-hidden="true" />
+
+            {/* Floating Trust Badge: Safe & Confidential Space */}
+            <div className={`${styles.floatingBadge} ${styles.floatingBadgeTop}`}>
+              <span className={styles.badgePulseDot} aria-hidden="true" />
+              <span className={styles.badgeText}>
+                {hero.floatingBadge1 || "Безопасное пространство"}
               </span>
-            </figcaption>
-          </figure>
+            </div>
+
+            {/* Main Arch Portrait Card */}
+            <figure className={styles.posterWrap}>
+              <div className={styles.innerGleam} aria-hidden="true" />
+              <img
+                src={iraJpg}
+                alt={hero.imageAlt}
+                className={styles.poster}
+                loading="eager"
+                decoding="async"
+              />
+              <figcaption className={styles.overlay}>
+                <div className={styles.captionBadge}>
+                  <span className={styles.captionBadgeDot} aria-hidden="true">✦</span>
+                  <span className={styles.captionRole}>
+                    {hero.facilitatorRole}
+                  </span>
+                </div>
+                <strong className={styles.captionName}>
+                  {hero.facilitatorName}
+                </strong>
+              </figcaption>
+            </figure>
+
+            {/* Floating Trust Badge: 1:1 & Mini-Groups */}
+            <div className={`${styles.floatingBadge} ${styles.floatingBadgeBottom}`}>
+              <span className={styles.badgeStarIcon} aria-hidden="true">✨</span>
+              <span className={styles.badgeText}>
+                {hero.floatingBadge2 || "Индивидуально и в группах"}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
